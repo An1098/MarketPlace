@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <title>Регистрация</title>
+</head>
+<header>
+    <div class="header-top">
+        <p>О нас</p>
+        <p>Доставка</p>
+        <p>Возврат</p>
+        <p>Контакты</p>
+    </div>
+    <div class="header">
+        <a href="/product"><img class="logo" th:src="@{/image/logo.png}" title="logo"></a>
+        <div class="wrap buttons-box">
+            <a href="/product" class="button button-blue">Каталог</a>
+        </div>
+    </div>
+</header>
+<body>
+<main class="wrap">
+    <div class="registration">
+        <h2>Регистрация</h2>
+        <form method="POST" th:action="@{/registration}" th:object="${person}">
+            <label for="lastName">Введите фамилию: </label>
+            <br>
+            <input type="text" th:field="*{lastName}" id="lastName">
+            <div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            <br>
+            <label for="firstName">Введите имя: </label>
+            <br>
+            <input type="text" th:field="*{firstName}" id="firstName">
+            <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+            <br>
+            <label for="email">Введите email: </label>
+            <br>
+            <input type="text" th:field="*{email}" id="email">
+            <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            <br>
+            <label for="phoneNumber">Введите номер телефона: </label>
+            <br>
+            <input type="text" th:field="*{phoneNumber}" id="phoneNumber">
+            <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+            <br>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <label for="login">Введите логин:</label>
+            <br>
+            <input type="text" th:field="*{login}" id="login">
+            <div style="color: red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+            <br>
+            <label for="password">Введите пароль:</label>
+            <br>
+            <input type="password" th:field="*{password}" id="password">
+            <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            <br>
+            <input  class="button-gradient" type="submit" value="Зарегистрироваться">
+        </form>
+        <a class="button button-gray" href="/authentication">Вoйти</a>
+    </div>
+    </div>
+</main>
+</body>
+</html>

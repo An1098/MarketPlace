@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <title>Личный кабинет администратора</title>
+</head>
+<body>
+<header>
+    <div class="header">
+        <a href="/product"><img class="logo" th:src="@{/image/logo.png}" title="logo"></a>
+        <div class="wrap buttons-box">
+            <form class="form-button" method="get" th:action="@{/ordersAdmin}">
+                <input class="button button-blue" type="submit" value="Все заказы">
+            </form>
+            <form method="get" class="form-button" th:action="@{/persons}">
+                <input class="button button-green" type="submit" value="Все пользователи">
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <button class="button button-gray" type="submit">Выйти из личного кабинета</button>
+            </form>
+        </div>
+    </div>
+</header>
+<main class="admin-product">
+    <h2>Личный кабинет администратора</h2>
+    <p class="allProduct_button-addProduct"><a href="admin/product/add" class="button button-gradient">Добавить товар</a></p>
+    <div class="allProduct">
+        <h3>Все товары:</h3>
+        <div th:each="product : ${products}">
+            <p> <span class="allProduct-item_title">Наименование: </span> <span class="allProduct-item_name" th:text="${product.getTitle()}"></span> </p>
+            <p> <span class="allProduct-item_title">Цена: </span> <span th:text="${product.getPrice()}"></span> </p>
+            <p> <span class="allProduct-item_title">Склад: </span> <span th:text="${product.getWarehouse()}"></span> </p>
+            <p> <span class="allProduct-item_title">Продавец: </span> <span th:text="${product.getSeller()}"></span> </p>
+            <p> <span class="allProduct-item_title">Категория: </span> <span th:text="${product.getCategory().getName()}"></span> </p>
+            <p> <span class="allProduct-item_title">Описание: </span> <span th:text="${product.getDescription()}"></span> </p>
+
+            <a class="button " th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактирование товара</a>
+            <a class="button button-gray" th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удаление товара</a>
+            <hr>
+            <br>
+        </div>
+    </div>
+</main>
+</body>
+</html>

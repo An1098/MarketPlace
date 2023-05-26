@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <title>Заказы</title>
+</head>
+
+<body>
+<header>
+    <div class="header-top">
+        <p>О нас</p>
+        <p>Доставка</p>
+        <p>Возврат</p>
+        <p>Контакты</p>
+    </div>
+    <div class="header">
+        <a href="/product"><img class="logo" th:src="@{/image/logo.png}" title="logo"></a>
+        <div class="wrap buttons-box">
+            <a class="button button-blue" href="/personAccount"> На главную</a>
+            <form method="get" th:action="@{/cart}">
+                <button class="button button-green" type="submit">Корзина</button>
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <button class="button button-gray" type="submit">Выйти из личного кабинета</button>
+            </form>
+        </div>
+    </div>
+</header>
+<br>
+<br>
+<h2>Заказы</h2>
+
+<div class="orders" th:each="order : ${orders}">
+    <div class="order-photo">
+        <img th:src="'/img/' + ${order.getProduct().getImageList()[0].getFileName()}">
+    </div>
+
+    <div class="order-info info-box">
+        <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
+        <dl class="info-box_item">
+            <dt><span>Дата заказа:</span></dt><dd th:text="${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></dd>
+        </dl>
+        <dl class="info-box_item">
+            <dt><span>Наименование:</span></dt><dd th:text="${order.getProduct().getTitle()}"></dd>
+        </dl>
+        <dl class="info-box_item">
+            <dt><span>Количество:</span></dt><dd th:text="${order.getCount()}"></dd>
+        </dl>
+        <dl class="info-box_item">
+            <dt><span>Цена:</span></dt><dd th:text="${order.getPrice()}"></dd>
+        </dl>
+        <dl class="info-box_item">
+            <dt><span>Статус:</span></dt><dd th:text="${order.getStatus()}"></dd>
+        </dl>
+    </div>
+</div>
+
+</body>
+</html>

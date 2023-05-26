@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <title>Редактирование пользователя</title>
+</head>
+<body>
+<header>
+    <div class="header">
+        <a href="/product"><img class="logo" th:src="@{/image/logo.png}" title="logo"></a>
+        <div class="wrap buttons-box">
+            <a class="button button-gradient" href="/admin">Все товары</a>
+            <form class="form-button" method="get" th:action="@{/ordersAdmin}">
+                <input class="button button-blue" type="submit" value="Все заказы">
+            </form>
+            <form method="get" class="form-button" th:action="@{/persons}">
+                <input class="button button-green" type="submit" value="Все пользователи">
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <button class="button button-gray" type="submit">Выйти из личного кабинета</button>
+            </form>
+        </div>
+    </div>
+</header>
+<main class="editPerson">
+    <h2>Редактирование данных пользователя</h2>
+    <div class="editPerson-form">
+        <form method="POST" th:action="@{/admin/person/edit/{id}(id=${person.getId()})}" th:object="${person}" enctype="multipart/form-data">
+            <label for="lastName">Фамилия: </label>
+            <input type="text" th:field="*{lastName}" th:value="${person.getLastName()}" id="lastName">
+            <div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+            <br>
+            <br>
+            <label for="firstName">Имя: </label>
+            <input type="text" th:field="*{firstName}" id="firstName">
+            <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+            <br>
+            <br>
+            <label for="email">Email: </label>
+            <input type="text" th:field="*{email}" id="email">
+            <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            <br>
+            <br>
+            <label for="phoneNumber">Телефон: </label>
+            <input type="text" th:field="*{phoneNumber}" id="phoneNumber">
+            <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+            <br>
+            <br>
+            <!--    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+            <label for="login">Логин:</label>
+            <input type="text" th:field="*{login}" id="login">
+            <!--    валидация-->
+            <div style="color: red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+            <br>
+            <br>
+            <label for="password">Пароль:</label>
+            <input type="password" th:field="*{password}"  th:text="${person.getPassword()}" id="password">
+            <!--    валидация-->
+            <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            <br>
+            <br>
+            <label for="role">Введите роль: </label>
+            <input type="text"  th:field="*{role}" id="role">
+            <div th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
+            <br>
+            <br>
+            <input class="button button-red" type="submit" value="Редактировать">
+            <br>
+            <br>
+        </form>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,538 @@
+* {
+    box-sizing: border-box;
+
+}
+body {
+    font-family: Tahoma,Verdana,Segoe,sans-serif;
+    max-width: 2560px;
+    padding: 0;
+    margin: 0;
+}
+
+.wrap {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+}
+h2 {
+    margin: 50px auto;
+    text-align: center;
+}
+h4 {
+    color: #0075BC;
+}
+a {
+    text-decoration: none;
+}
+
+img {
+    height: auto;
+    width: 100%;
+}
+
+
+/*button*****************************************************************************/
+
+.button {
+    display: inline-block;
+    padding: 0 25px;
+    margin: 0 15px 15px 0;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #444;
+    background: #fff;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    transition: box-shadow 0.2s;
+    text-align: center;
+}
+.button:focus-visible {
+    border: 1px solid #4c51f9;
+    outline: none;
+}
+.button:hover {
+    transition: all 0.2s;
+    box-shadow: 0 7px 14px rgb(65 132 144 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+}
+.button:active {
+    background-color: #808080;
+}
+
+.button-gray {
+    background-color: #eee;
+    border-color: #eee;
+    color: #444;
+}
+.button-blue {
+    background-color: #0075bc;
+    border-color: #0075bc;
+    color: #fff;
+}
+.button-green {
+    background-color: rgb(162 208 113);
+    border-color: rgb(162 208 113);
+    color: #fff;
+}
+.button-red {
+    background-color: rgb(190 9 9);
+    border-color: rgb(190 9 9);
+    color: #fff;
+}
+
+.button-gradient{
+    display: inline-block;
+    padding: 0 55px;
+    margin: 0 15px 15px 0;
+    outline: none;
+    border: 1px solid rgba(86, 186, 132, 0.7);
+    border-radius: 50px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    appearance: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    transition: box-shadow 0.2s;
+    background: -webkit-linear-gradient(90deg, rgba(31, 139, 203, 0.7),rgba(21, 158, 217, 0.7),rgba(14, 186, 188, 0.7), rgba(86, 186, 132, 0.7), rgba(162, 208, 113, 0.7));
+    background: linear-gradient(90deg, rgba(31, 139, 203, 0.7),rgba(21, 158, 217, 0.7),rgba(14, 186, 188, 0.7), rgba(86, 186, 132, 0.7), rgba(162, 208, 113, 0.7));
+}
+
+
+
+
+
+/*header*******************************************************************************/
+.logo {
+    width: 250px;
+    margin-left: 30px;
+}
+
+.header .fa-search {
+    margin-right: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px -4px rgb(65 132 144 / 10%), 0 1px 3px -4px rgb(0 0 0 / 8%);
+}
+.header-top {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 40px;
+    color: white;
+    background: #3c3f41;
+    width: 100%;
+
+}
+.header-top p {
+    margin-right: 43px;
+}
+.buttons-box .button:nth-child(1) {
+    margin-right: 50px;
+}
+.buttons-box .button:nth-child(2) {
+    margin-right: 30px;
+}
+.reklama {
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+/*form-search ***********************************************************************/
+.hidden-element  {
+    display: none;
+    margin: 20px auto 0;
+    max-width: 1240px;
+}
+.form-search {
+    color: #444;
+}
+.form-search label, .form-search p {
+    font-size: 13px;
+}
+.form-search input[type="number"], .form-search input[type="text"]  {
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid dimgrey;
+}
+.form-search input[type="text"]{
+    width: 100%;
+}
+
+
+.form-box {
+    display: inline-block;
+
+}
+
+fieldset {
+    border: 1px solid dimgrey;
+    border-radius: 7px;
+
+}
+fieldset legend {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/*catalog************************************************************/
+.sale {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+.sale img {
+    border-radius: 15px;
+}
+.catalog-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1240px;
+    margin: 0 auto;
+
+}
+.card {
+    max-width: 290px;
+    /*text-align: center;*/
+    outline: 1px solid #c2c2c2;
+    padding: 20px;
+    margin: 0 auto 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+.card:hover {
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.1),
+    0px 2px 4px rgba(0,0,0,0.1),
+    0px 4px 8px rgba(0,0,0,0.1),
+    0px 8px 16px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+.card-title {
+    color: #444444;
+    line-height: 20px;
+    margin-top: 20px;
+}
+.card-price {
+    font-weight: bold;
+}
+
+
+.catalog-search {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+.cart-button  .button{
+    width: 100%;
+    margin: 15px 0 0;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+
+
+/*карусель**************************************************/
+
+.slideshow-container {
+    max-width: 550px;
+    position: relative;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: rgba(21, 158, 217, 1);
+    font-weight: bold;
+    font-size: 22px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+
+/*infoProduct*****************************************************/
+
+.photo-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 80%;
+    margin: 50px auto;
+}
+
+.photo {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+.info {
+    margin-left: 50px;
+}
+
+.photo-info h2{
+    margin-top: 0;
+    text-align: start;
+}
+
+.price-box {
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 0 8px 2px rgba(0,0,0,.1);
+    border-radius: 8px;
+    width: 350px;
+}
+.price-box .card_price {
+    font-size: 22px;
+}
+.info-box {
+    color: #282828;
+    margin-top: 50px;
+}
+.info-box_item{
+    display: flex;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    width: 100%;
+    line-height: 20px;
+}
+.info-box dt span {
+    font-weight: bold;
+}
+.desc {
+    width: 75%;
+    margin: 50px auto;
+}
+.desc span {
+    font-weight: bold;
+}
+
+
+/*authentication*******************************************************************************/
+.authentication {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+.authentication .button-gradient, .authentication .button-gray {
+    width: 100%;
+    margin: 0;
+}
+.authentication input[type="text"], .authentication input[type="password"]{
+    margin-bottom: 30px;
+    height: 30px;
+    width: 75%;
+}
+
+/*registration**********************************************************************************/
+.registration {
+    padding-bottom: 50px;
+    width: 350px;
+}
+
+.registration input{
+    margin-bottom: 18px;
+    height: 28px;
+    width: 100%;
+}
+.registration input[type="submit"], .registration .button-gray {
+    height: 46px;
+    line-height: 46px;
+    width: 100%;
+}
+
+
+/*person********************************************************************************************/
+
+
+/*orders********************************************************************************************/
+.orders {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 80%;
+    margin: 30px auto;
+    outline: 1px solid #c2c2c2;
+    border-radius: 15px;
+}
+.order-photo {
+    width: 200px;
+    text-align: center;
+}
+.order-photo img {
+    height: 100%;
+    border-radius: 15px 0 0 15px;
+}
+.order-info {
+    margin:0 50px;
+}
+
+
+/*cart********************************************************************************************/
+.wrap-cart{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+}
+.cart {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.cart-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 30px auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #c2c2c2;
+    max-width: 750px;
+    width: 100%;
+
+}
+.total {
+    width: 40%;
+    margin-top: 50px;
+}
+.cart-item_photo {
+    width: 200px;
+    text-align: center;
+}
+.cart-item_photo img {
+    height: 100%;
+}
+.cart-item_info {
+    margin:0 50px;
+}
+.cart-item_info h3 {
+    color: #444444;
+}
+.cart-item_info .button {
+    margin-top: 50px;
+}
+
+/*admin******************************************************************************************************/
+.allProduct_button-addProduct {
+    margin: 0 auto;
+    text-align: center;
+    width: 350px;
+}
+.allProduct_button-addProduct a{
+    width: 100%;
+}
+.allProduct {
+    width: 80%;
+    margin: 0 auto;
+}
+.allProduct h3 {
+    text-transform: uppercase;
+    margin: 30px 0;
+}
+.allProduct-item_title {
+    font-weight: bold;
+}
+.allProduct-item_name {
+    color: rgba(31, 139, 203, 1);
+}
+
+/*addProduct editProduct, editPerson*******************************************************************************************************/
+.addProduct-form, .editProduct-form, .editPerson-form {
+    margin: 0 auto;
+    width: 50%;
+}
+.addProduct textarea, .addProduct select, .addProduct input,
+.editProduct textarea, .editProduct select, .editProduct input, .editPerson input{
+    width: 100%;
+}
+.addProduct-description, .editProduct-description {
+    min-height: 100px;
+}
+.addProduct input[type="file"] {
+    margin-bottom: 30px;
+}
+.addProduct, .editProduct, editPerson {
+    padding-bottom: 100px;
+}
+
+
+
+/*orderAdmin*************************************************************************************************************/
+.orders-search {
+    margin: 20px auto 0;
+    width: 80%;
+}
+.orders-search .orders {
+    width: 100%;
+}
+
+
+/*persons*************************************************************************************************************/
+.persons {
+    max-width: 1024px;
+    margin: 50px auto;
+}
+.persons h2 {
+    text-align: start;
+}
+.persons-item {
+    margin-bottom: 30px;
+}
+.persons-item_title {
+    font-weight: bold;
+}

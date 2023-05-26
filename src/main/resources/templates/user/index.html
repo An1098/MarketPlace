@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <title>Личный кабинет</title>
+</head>
+<body>
+<header>
+    <div class="header-top">
+        <p>О нас</p>
+        <p>Доставка</p>
+        <p>Возврат</p>
+        <p>Контакты</p>
+    </div>
+    <div class="header">
+        <a href="/product"><img class="logo" th:src="@{/image/logo.png}" title="logo"></a>
+        <div class="wrap buttons-box">
+            <p class="button " id="click-to-hide" ><i class="fas fa-search"></i>Поиск товаров</p>
+            <form method="get" th:action="@{/orders}">
+                <input class="button button-blue" type="submit" value="Заказы">
+            </form>
+            <form method="get" th:action="@{/cart}">
+                <button class="button button-green" type="submit">Корзина</button>
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <button class="button button-gray" type="submit">Выйти из личного кабинета</button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<div id="hidden-element" class="hidden-element">
+    <form class="form-search" th:method="POST" th:action="@{/personAccount/search}">
+        <fieldset>
+            <legend> Выберите параметры: </legend>
+            <br>
+            <div class="form-box">
+                <label for="search">Поиск по наименованию</label>
+                <input type="text" id="search" name="search" th:value="*{value_search}">
+                <br>
+                <p>Цена</p>
+                <label for="ot">от</label>
+                <input type="number" name="ot" id="ot" th:value="*{value_price_ot}">
+                <label for="do">до</label>
+                <input type="number" name="do" id="do" th:value="*{value_price_do}">
+                <br>
+                <br>
+                <div>
+                    <input type="radio" id="ascending_price" name="price" value="sorted_by_ascending_price" >
+                    <label for="ascending_price"> Сортировать по возрастанию цены </label>
+                    <input type="radio" id="descending_price" name="price" value="sorted_by_descending_price">
+                    <label for="descending_price"> Сортировать по убыванию цены </label>
+                </div>
+                <p>Категория товаров:</p>
+                <input type="radio" id="furniture" name="contract" value="furniture">
+                <label for="furniture">Мебель</label>
+
+                <input type="radio" id="appliances" name="contract" value="appliances">
+                <label for="appliances">Бытовая техника</label>
+
+                <input type="radio" id="clothes" name="contract" value="clothes">
+                <label for="clothes">Одежда</label>
+                <br>
+                <br>
+                <input class="button-gradient" type="submit" value="Поиск">
+            </div>
+        </fieldset>
+    </form>
+    <br>
+    <h4>Результат поиска, сортировки, фильтрации: </h4>
+    <div class="catalog-search">
+        <div class="card" th:each="product : ${search_product}">
+            <a th:href="@{/product/info/{id}(id=${product.getId()})}">
+                <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="200px"/>
+            </a>
+            <br>
+            <p><span>цена: </span><span class="card-price" th:text="${product.getPrice()}"></span></p>
+            <a class="card-title" th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+            <div class="cart-button">
+                <a class="button button-blue" th:href="@{/cart/add/{id}(id=${product.getId()})}">В корзину</a>
+                <a class="button " th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="Подробнее"></a>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="sale">
+    <img class="reklama" th:src="@{/image/reklama.png}" title="  ">
+</div>
+
+<h2>Каталог товаров</h2>
+<div class="catalog-cards">
+    <!--Перебираем лист продуктов ${products} который мы получили в ProductController в методе getAllProduct-->
+    <div class="card" th:each="product : ${products}">
+        <a  th:href="@{/product/info/{id}(id=${product.getId()})}">
+            <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+        </a>
+        <br>
+        <p>
+            <span>цена: </span>
+            <span class="card-price" th:text="${product.getPrice()}"></span>
+        </p>
+        <a class="card-title" th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+        <div class="cart-button">
+            <a class="button button-blue" th:href="@{/cart/add/{id}(id=${product.getId()})}">В корзину</a>
+            <a class="button " th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="Подробнее"></a>
+        </div>
+
+    </div>
+</div>
+<script th:src="@{/js/index.js}"></script>
+</body>
+</html>

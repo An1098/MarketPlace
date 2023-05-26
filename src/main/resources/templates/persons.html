@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <div class="header">
+        <a href="/product"><img class="logo" th:src="@{/image/logo.png}" title="logo"></a>
+        <div class="wrap buttons-box">
+            <a class="button button-blue" href="/admin">Все товары</a>
+            <form class="form-button" method="get" th:action="@{/ordersAdmin}">
+                <input class="button button-green" type="submit" value="Все заказы">
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <button class="button button-gray" type="submit">Выйти из личного кабинета</button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<main class="persons">
+    <h2>Список пользователей</h2>
+    <div class="persons-item" th:each="user : ${persons}">
+        <p> <span class="persons-item_title">Логин:</span> <span th:text="${user.getLogin()}"></span></p>
+        <p> <span class="persons-item_title">Фамилия: </span> <span  th:text="${user.getLastName()}"></span></p>
+        <p> <span class="persons-item_title">Имя: </span> <span th:text="${user.getFirstName()}"></span></p>
+        <p> <span class="persons-item_title">Телефон: </span> <span th:text="${user.getPhoneNumber()}"></span></p>
+        <p> <span class="persons-item_title">Email: </span> <span th:text="${user.getEmail()}"></span></p>
+        <br>
+        <p> <span class="persons-item_title">Роль: </span> <span th:text="${user.getRole()}"></span></p>
+        <br>
+        <a class="button button-gradient" th:href="@{/admin/person/edit/{id}(id=${user.getId()})}">Редактировать данные</a>
+        <a class="button button-gray" th:href="@{/admin/person/delete/{id}(id=${user.getId()})}">Удалить пользователя</a>
+        <hr>
+    </div>
+</main>
+</body>
+</html>

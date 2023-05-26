@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <title>Добавление товара</title>
+</head>
+<body>
+<header>
+    <div class="header">
+        <a href="/product"><img class="logo" th:src="@{/image/logo.png}" title="logo"></a>
+        <div class="wrap buttons-box">
+            <a class="button button-gradient" href="/admin">Все товары</a>
+            <form class="form-button" method="get" th:action="@{/ordersAdmin}">
+                <input class="button button-blue" type="submit" value="Все заказы">
+            </form>
+            <form method="get" class="form-button" th:action="@{/persons}">
+                <input class="button button-green" type="submit" value="Все пользователи">
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <button class="button button-gray" type="submit">Выйти из личного кабинета</button>
+            </form>
+        </div>
+    </div>
+</header>
+<main class="addProduct">
+    <h2>Добавление товара</h2>
+    <!--Указываем что форма может работать с файлами-enctype="multipart/form-data"-->
+    <!--привязываем форму к объекту-th:object="${product}-->
+    <div class="addProduct-form">
+        <form th:method="POST" th:action="@{/admin/product/add}" th:object="${product}" enctype="multipart/form-data">
+            <label for="title">Введите наименование товара:</label>
+            <input type="text" th:field="*{title}" placeholder="Наименование" id="title">
+            <!--    если валидация будет не пройдена будут выводится ошибки-->
+            <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+            <br>
+            <br>
+
+            <label for="price">Введите цену товара:</label>
+            <input type="number" th:field="*{price}" min="1" step="0.00" placeholder="Цена" id="price">
+            <!--    если валидация будет не пройдена будут выводится ошибки-->
+            <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+            <br>
+            <br>
+
+            <label for="warehouse">Введите склад хранения товара:</label>
+            <input type="text" th:field="*{warehouse}"  placeholder="Склад" id="warehouse">
+            <!--    если валидация будет не пройдена будут выводится ошибки-->
+            <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
+            <br>
+            <br>
+
+            <label for="category">Выберете категорию товара: </label>
+            <select name="category" th:field="*{category}" id="category">
+                <!--        обращаемся к объекту  категорий, который положили в модель в AdminController и создаём цикл-->
+                <div th:each="element : ${category}">
+                    <option th:text="${element.getName()}" th:value="${element.getId()}">
+                </div>
+            </select>
+            <!--    валидация-->
+            <div style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+            <br>
+            <br>
+
+            <label for="seller">Введите данные о продавце:</label>
+            <textarea th:field="*{seller}" placeholder="Продавец" id="seller"></textarea>
+            <!--    валидация-->
+            <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
+            <br>
+            <br>
+
+            <label for="description">Введите описание товара:</label>
+            <textarea class="addProduct-description"  th:field="*{description}" placeholder="Описание" id="description"></textarea>
+            <!--    если валидация будет не пройдена будут выводится ошибки-->
+            <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+            <br>
+            <br>
+
+            <p style="color: blue">
+                Вы можете добавить до 5 фотографий. Первая фотография не может быть пустой, так как она будет являться главной при выводе карточки товара
+            </p>
+            <input type="file" name="file_one">
+            <input type="file" name="file_two">
+            <input type="file" name="file_three">
+            <input type="file" name="file_four">
+            <input type="file" name="file_five">
+            <br>
+            <br>
+            <input class="button button-red" type="submit" value="Добавить">
+        </form>
+    </div>
+</main>
+</body>
+</html>

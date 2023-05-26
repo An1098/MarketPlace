@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+    <title>Информация о товаре</title>
+</head>
+<header><div class="header-top">
+    <p>О нас</p>
+    <p>Доставка</p>
+    <p>Возврат</p>
+    <p>Контакты</p>
+</div>
+    <div class="header">
+        <a href="/product"><img class="logo" th:src="@{/image/logo.png}" title="logo"></a>
+        <div class="wrap buttons-box">
+            <a href="/product" class="button button-blue">Каталог</a>
+            <a href="/personAccount" class="button button-gray">В личный кабинет</a>
+        </div>
+    </div>
+</header>
+<body>
+
+<div class="photo-info">
+    <div class="photo">
+        <div class="slideshow-container ">
+            <div class="mySlides fade" th:each="img : ${product.getImageList()}" >
+                <img th:src="'/img/'+ ${img.getFileName()}" style="width:380px">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+    <div class="info">
+        <h2 th:text="${product.getTitle()}"></h2>
+        <div class="price-box">
+            <p><span>цена: </span><span class="card_price" th:text="${product.getPrice()}"></span> <span>руб.</span></p>
+            <a class="button-gradient" th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a>
+        </div>
+
+        <div class="info-box">
+            <dl class="info-box_item">
+                <dt><span>Склад:</span></dt><dd th:text="${product.getWarehouse()}"></dd>
+            </dl>
+            <dl class="info-box_item">
+                <dt><span>Продавец:</span></dt><dd th:text="${product.getSeller()}"></dd>
+            </dl>
+            <dl class="info-box_item">
+                <dt><span>Категория:</span></dt><dd th:text="${product.getCategory().getName()}"></dd>
+            </dl>
+        </div>
+
+    </div>
+</div>
+<div class="desc">
+    <span>Описание:</span>
+    <p th:text="${product.getDescription()}"></p>
+</div>
+
+<script th:src="@{/js/carusel.js}"></script>
+</body>
+</html>
